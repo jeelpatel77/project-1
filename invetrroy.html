@@ -1,0 +1,1102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;display=swap" rel="stylesheet"/>
+    <style>
+         body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+           
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .navbar .search-bar {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #2c2e50;
+        }
+        .navbar .search-bar i {
+            margin-right: 10px;
+        }
+        .navbar .menu {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .menu a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #2c2e50;
+            font-size: 14px;
+        }
+        .navbar .menu a:hover {
+            color: #6c63ff;
+        }
+        .navbar .menu .dropdown {
+            position: relative;
+        }
+        .navbar .menu .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .navbar .menu .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .navbar .menu .dropdown-content a {
+            padding: 10px 20px;
+            display: block;
+            color: #2c2e50;
+        }
+        .navbar .menu .dropdown-content a:hover {
+            background-color: #f0f2fa;
+        }
+        .navbar .auth {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .auth a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #2c2e50;
+            font-size: 14px;
+        }
+        .navbar .auth .btn {
+            padding: 10px 20px;
+            border: 1px solid #2c2e50;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .navbar .auth .btn:hover {
+            background-color: #2c2e50;
+            color: white;
+        }
+        .hero {
+            text-align: center;
+            padding: 70px 110px;
+            background-color: #f0f2fa;
+        }
+        .search-box {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .search-box select, .search-box input {
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #2c2e50;
+            background-color: transparent;
+        }
+        .search-box select {
+            margin: 0 10px;
+        }
+        .search-box button {
+            background-color: #6c63ff;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 50%;
+            color: white; 
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .container {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .breadcrumb {
+            font-size: 14px;
+            color: #6c757d;
+        }
+        .breadcrumb a {
+            color: #6c757d;
+            text-decoration: none;
+        }
+        .breadcrumb a:hover {
+            text-decoration: underline;
+        }
+        .title {
+            font-size: 36px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        .subtitle {
+            font-size: 16px;
+            color: #6c757d;
+            margin: 10px 0;
+        }
+        
+        .card-container {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+        .card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            width: 23%;
+            overflow: hidden;
+            position: relative;
+        }
+        .card img {
+            width: 100%;
+            height: auto;
+        }
+        .badge {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .badge.green {
+            background-color: #28a745;
+        }
+        .bookmark {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #fff;
+            border-radius: 50%;
+            padding: 5px;
+            cursor: pointer;
+        }
+        .card-content {
+            padding: 15px;
+        }
+        .card-title {
+            font-size: 18px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        .card-subtitle {
+            font-size: 14px;
+            color: #6c757d;
+            margin: 10px 0;
+        }
+        .card-info {
+            display: flex;
+            justify-content: space-between;
+            font-size: 14px;
+            color: #6c757d;
+            margin: 10px 0;
+        }
+        .card-info i {
+            margin-right: 5px;
+        }
+        .card-price {
+            font-size: 16px;
+            font-weight: 700;
+            margin: 10px 0;
+        }
+        .card-old-price {
+            text-decoration: line-through;
+            color: #6c757d;
+            font-size: 14px;
+        }
+        .card-link {
+            color: #007bff;
+            text-decoration: none;
+            font-size: 14px;
+        }
+        .card-link i {
+            margin-left: 5px;
+        }
+        .Inventory {
+            margin: 0;
+            padding: 0;
+            background-color: #0b0d1a;
+            color: #ffffff;
+        }
+        .header {
+            text-align: center;
+            padding: 40px 0;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin: 0;
+        }
+        .header p {
+            font-size: 18px;
+            margin: 10px 0 0;
+        }
+        .email-signup {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .email-signup input[type="email"] {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 25px 0 0 25px;
+            outline: none;
+            width: 300px;
+        }
+        .email-signup button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 0 25px 25px 0;
+            background-color: #3b49df;
+            color: #ffffff;
+            cursor: pointer;
+            outline: none;
+        }
+        .footer {
+            border-top: 1px solid #2c2f3f;
+            padding: 40px 0;
+        }
+        .footer .links {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .footer .links div {
+            flex: 1;
+            min-width: 150px;
+            margin: 10px 0;
+        }
+        .footer .links h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .footer .links ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .footer .links ul li {
+            margin: 5px 0;
+        }
+        .footer .links ul li a {
+            color: #ffffff;
+            text-decoration: none;
+        }
+        .footer .app-links {
+            display: flex;
+            flex-direction: column;
+        }
+        .footer .app-links a {
+            display: flex;
+            align-items: center;
+            background-color: #2c2f3f;
+            padding: 10px 20px;
+            border-radius: 10px;
+            margin: 5px 0;
+            text-decoration: none;
+            color: #ffffff;
+        }
+        .footer .app-links a i {
+            margin-right: 10px;
+        }
+        .footer .social-links {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .footer .social-links a {
+            color: #ffffff;
+            margin: 0 10px;
+            text-decoration: none;
+            font-size: 20px;
+        }
+        .footer .copyright {
+            text-align: center;
+            margin-top: 20px;
+            font-size: 14px;
+        }
+        .footer .terms {
+            text-align: center;
+            margin-top: 10px;
+            font-size: 14px;
+        }
+        .footer .terms a {
+            color: #ffffff;
+            text-decoration: none;
+            margin: 0 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+         BOXCARS
+        </div>
+        <div class="search-bar">
+         <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+             <input type="text" placeholder="Search.." name="search2">
+             <button type="submit"><i class="fa fa-search"></i></button>
+         </i>
+         <span>
+         
+         </span>
+        </div>
+        <div class="menu">
+         <a href="#">
+          Home
+         </a>
+         <div class="dropdown">
+          <a href="#">
+           Inventory
+          </a>
+          <div class="dropdown-content">
+           <a href="#">
+            New Cars
+           </a>
+           <a href="#">
+            Used Cars
+           </a>
+          </div>
+         </div>
+         <div class="dropdown">
+          <a href="#">
+           Blog
+          </a>
+          <div class="dropdown-content">
+           <a href="bloge.html">
+            Latest News
+           </a>
+           <a href="#">
+            Tips &amp; Advice
+           </a>
+          </div>
+         </div>
+         <div class="dropdown">
+          <a href="shop01.html">
+           Shop
+          </a>
+          <div class="dropdown-content">
+           <a href="#">
+            Accessories
+           </a>
+           <a href="#">
+            Parts
+           </a>
+          </div>
+         </div>
+         <div class="dropdown">
+          <a href="#">
+           Pages
+          </a>
+          <div class="dropdown-content">
+           <a href="contact.html">
+            About Us
+           </a>
+           <a href="#">
+            Contact
+           </a>
+          </div>
+         </div>
+         <a href="#">
+          Contact
+         </a>
+        </div>
+        <div class="auth">
+         <a href="#">
+          Sign in
+         </a>
+         <a class="btn" href="#">
+          Add Listing
+         </a>
+        </div>
+       </div>
+       <div class="hero">
+       <div class="search-box">
+        <select>
+         <option>
+          Used Cars
+         </option>
+        </select>
+        <select>
+         <option>
+          Any Makes
+         </option>
+        </select>
+        <select>
+         <option>
+          Any Models
+         </option>
+        </select>
+        <select>
+         <option>
+          Any Price
+         </option>
+        </select>
+        <button>
+         <i class="fas fa-search">
+         </i>
+        </button>
+       </div>
+       </div>
+       <div class="container">
+        <div class="breadcrumb">
+         <a href="#">
+          Home
+         </a>
+         /
+         <a href="#">
+          Cars for Sale
+         </a>
+        </div>
+        <div class="title">
+         New and Used Cars For Sale
+        </div>
+        <div class="subtitle">
+         Showing 1 to 16 of 1559 vehicles
+        </div>
+       
+        <div class="card-container">
+         <div class="card">
+          <img alt="" height="400" src="img/shop3.jpg" width="600"/>
+          <div class="badge">
+           Low Mileage
+          </div>
+          <div class="bookmark">
+           <i class="far fa-bookmark">
+           </i>
+          </div>
+          <div class="card-content">
+           <div class="card-title">
+            Range Rover, Defender 110
+           </div>
+           <div class="card-subtitle">
+            2023 C300e AMG Line Night Ed Premium...
+           </div>
+           <div class="card-info">
+            <div>
+             <i class="fas fa-tachometer-alt">
+             </i>
+             72,925 miles
+            </div>
+            <div>
+             <i class="fas fa-gas-pump">
+             </i>
+             Petrol
+            </div>
+            <div>
+             <i class="fas fa-cogs">
+             </i>
+             Automatic
+            </div>
+           </div>
+           <div class="card-price">
+            <span class="card-old-price">
+             $789
+            </span>
+            $399
+           </div>
+           <a class="card-link" href="#">
+            View Details
+            <i class="fas fa-arrow-right">
+            </i>
+           </a>
+          </div>
+         </div>
+         <div class="card">
+          <img alt="" height="400" src="img/car4.jpg" width="600"/>
+          <div class="bookmark">
+           <i class="far fa-bookmark">
+           </i>
+          </div>
+          <div class="card-content">
+           <div class="card-title">
+            Mercedes-Benz, C Class
+           </div>
+           <div class="card-subtitle">
+            2023 C300e AMG Line Night Ed Premium...
+           </div>
+           <div class="card-info">
+            <div>
+             <i class="fas fa-tachometer-alt">
+             </i>
+             72,925 miles
+            </div>
+            <div>
+             <i class="fas fa-gas-pump">
+             </i>
+             Petrol
+            </div>
+            <div>
+             <i class="fas fa-cogs">
+             </i>
+             Automatic
+            </div>
+           </div>
+           <div class="card-price">
+            <span class="card-old-price">
+             $789
+            </span>
+            $399
+           </div>
+           <a class="card-link" href="#">
+            View Details
+            <i class="fas fa-arrow-right">
+            </i>
+           </a>
+          </div>
+         </div>
+         <div class="card">
+          <img alt="" height="400" src="img/car5.jpg" width="600"/>
+          <div class="badge green">
+           Great Price
+          </div>
+          <div class="bookmark">
+           <i class="far fa-bookmark">
+           </i>
+          </div>
+          <div class="card-content">
+           <div class="card-title">
+            New Range Rover, Evoque
+           </div>
+           <div class="card-subtitle">
+            2023 C300e AMG Line Night Ed Premium...
+           </div>
+           <div class="card-info">
+            <div>
+             <i class="fas fa-tachometer-alt">
+             </i>
+             72,925 miles
+            </div>
+            <div>
+             <i class="fas fa-gas-pump">
+             </i>
+             Petrol
+            </div>
+            <div>
+             <i class="fas fa-cogs">
+             </i>
+             Automatic
+            </div>
+           </div>
+           <div class="card-price">
+            <span class="card-old-price">
+             $789
+            </span>
+            $399
+           </div>
+           <a class="card-link" href="#">
+            View Details
+            <i class="fas fa-arrow-right">
+            </i>
+           </a>
+          </div>
+         </div>
+         <div class="card">
+          <img alt="" height="400" src="img/car6.jpg" width="600"/>
+          <div class="bookmark">
+           <i class="far fa-bookmark">
+           </i>
+          </div>
+          <div class="card-content">
+           <div class="card-title">
+            Audi, Q5
+           </div>
+           <div class="card-subtitle">
+            2023 C300e AMG Line Night Ed Premium...
+           </div>
+           <div class="card-info">
+            <div>
+             <i class="fas fa-tachometer-alt">
+             </i>
+             72,925 miles
+            </div>
+            <div>
+             <i class="fas fa-gas-pump">
+             </i>
+             Petrol
+            </div>
+            <div>
+             <i class="fas fa-cogs">
+             </i>
+             Automatic
+            </div>
+           </div>
+           <div class="card-price">
+            <span class="card-old-price">
+             $789
+            </span>
+            $399
+           </div>
+           <a class="card-link" href="#">
+            View Details
+            <i class="fas fa-arrow-right">
+            </i>
+           </a>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="container">
+        <div class="card-container">
+            <div class="card">
+             <img alt="" height="400" src="img/car7.jpg" width="600"/>
+             <div class="badge">
+              Low Mileage
+             </div>
+             <div class="bookmark">
+              <i class="far fa-bookmark">
+              </i>
+             </div>
+             <div class="card-content">
+              <div class="card-title">
+               Range Rover, Defender 110
+              </div>
+              <div class="card-subtitle">
+               2023 C300e AMG Line Night Ed Premium...
+              </div>
+              <div class="card-info">
+               <div>
+                <i class="fas fa-tachometer-alt">
+                </i>
+                72,925 miles
+               </div>
+               <div>
+                <i class="fas fa-gas-pump">
+                </i>
+                Petrol
+               </div>
+               <div>
+                <i class="fas fa-cogs">
+                </i>
+                Automatic
+               </div>
+              </div>
+              <div class="card-price">
+               <span class="card-old-price">
+                $789
+               </span>
+               $399
+              </div>
+              <a class="card-link" href="#">
+               View Details
+               <i class="fas fa-arrow-right">
+               </i>
+              </a>
+             </div>
+            </div>
+            <div class="card">
+             <img alt="" height="400" src="img/car8.jpg" width="600"/>
+             <div class="bookmark">
+              <i class="far fa-bookmark">
+              </i>
+             </div>
+             <div class="card-content">
+              <div class="card-title">
+               Mercedes-Benz, C Class
+              </div>
+              <div class="card-subtitle">
+               2023 C300e AMG Line Night Ed Premium...
+              </div>
+              <div class="card-info">
+               <div>
+                <i class="fas fa-tachometer-alt">
+                </i>
+                72,925 miles
+               </div>
+               <div>
+                <i class="fas fa-gas-pump">
+                </i>
+                Petrol
+               </div>
+               <div>
+                <i class="fas fa-cogs">
+                </i>
+                Automatic
+               </div>
+              </div>
+              <div class="card-price">
+               <span class="card-old-price">
+                $789
+               </span>
+               $399
+              </div>
+              <a class="card-link" href="#">
+               View Details
+               <i class="fas fa-arrow-right">
+               </i>
+              </a>
+             </div>
+            </div>
+            <div class="card">
+             <img alt="" height="400" src="img/car9.jpg" width="600"/>
+             <div class="badge green">
+              Great Price
+             </div>
+             <div class="bookmark">
+              <i class="far fa-bookmark">
+              </i>
+             </div>
+             <div class="card-content">
+              <div class="card-title">
+               New Range Rover, Evoque
+              </div>
+              <div class="card-subtitle">
+               2023 C300e AMG Line Night Ed Premium...
+              </div>
+              <div class="card-info">
+               <div>
+                <i class="fas fa-tachometer-alt">
+                </i>
+                72,925 miles
+               </div>
+               <div>
+                <i class="fas fa-gas-pump">
+                </i>
+                Petrol
+               </div>
+               <div>
+                <i class="fas fa-cogs">
+                </i>
+                Automatic
+               </div>
+              </div>
+              <div class="card-price">
+               <span class="card-old-price">
+                $789
+               </span>
+               $399
+              </div>
+              <a class="card-link" href="#">
+               View Details
+               <i class="fas fa-arrow-right">
+               </i>
+              </a>
+             </div>
+            </div>
+            <div class="card">
+             <img alt="" height="400" src="img/car10.jpg" width="600"/>
+             <div class="bookmark">
+              <i class="far fa-bookmark">
+              </i>
+             </div>
+             <div class="card-content">
+              <div class="card-title">
+               Audi, Q5
+              </div>
+              <div class="card-subtitle">
+               2023 C300e AMG Line Night Ed Premium...
+              </div>
+              <div class="card-info">
+               <div>
+                <i class="fas fa-tachometer-alt">
+                </i>
+                72,925 miles
+               </div>
+               <div>
+                <i class="fas fa-gas-pump">
+                </i>
+                Petrol
+               </div>
+               <div>
+                <i class="fas fa-cogs">
+                </i>
+                Automatic
+               </div>
+              </div>
+              <div class="card-price">
+               <span class="card-old-price">
+                $789
+               </span>
+               $399
+              </div>
+              <a class="card-link" href="#">
+               View Details
+               <i class="fas fa-arrow-right">
+               </i>
+              </a>
+             </div>
+            </div>
+           </div>
+          </div>
+          <div class="container">
+            <div class="card-container">
+                <div class="card">
+                 <img alt="" height="400" src="img/car11.jpg" width="600"/>
+                 <div class="badge">
+                  Low Mileage
+                 </div>
+                 <div class="bookmark">
+                  <i class="far fa-bookmark">
+                  </i>
+                 </div>
+                 <div class="card-content">
+                  <div class="card-title">
+                   Range Rover, Defender 110
+                  </div>
+                  <div class="card-subtitle">
+                   2023 C300e AMG Line Night Ed Premium...
+                  </div>
+                  <div class="card-info">
+                   <div>
+                    <i class="fas fa-tachometer-alt">
+                    </i>
+                    72,925 miles
+                   </div>
+                   <div>
+                    <i class="fas fa-gas-pump">
+                    </i>
+                    Petrol
+                   </div>
+                   <div>
+                    <i class="fas fa-cogs">
+                    </i>
+                    Automatic
+                   </div>
+                  </div>
+                  <div class="card-price">
+                   <span class="card-old-price">
+                    $789
+                   </span>
+                   $399
+                  </div>
+                  <a class="card-link" href="#">
+                   View Details
+                   <i class="fas fa-arrow-right">
+                   </i>
+                  </a>
+                 </div>
+                </div>
+                <div class="card">
+                 <img alt="" height="400" src="img/car12.jpg" width="600"/>
+                 <div class="bookmark">
+                  <i class="far fa-bookmark">
+                  </i>
+                 </div>
+                 <div class="card-content">
+                  <div class="card-title">
+                   Mercedes-Benz, C Class
+                  </div>
+                  <div class="card-subtitle">
+                   2023 C300e AMG Line Night Ed Premium...
+                  </div>
+                  <div class="card-info">
+                   <div>
+                    <i class="fas fa-tachometer-alt">
+                    </i>
+                    72,925 miles
+                   </div>
+                   <div>
+                    <i class="fas fa-gas-pump">
+                    </i>
+                    Petrol
+                   </div>
+                   <div>
+                    <i class="fas fa-cogs">
+                    </i>
+                    Automatic
+                   </div>
+                  </div>
+                  <div class="card-price">
+                   <span class="card-old-price">
+                    $789
+                   </span>
+                   $399
+                  </div>
+                  <a class="card-link" href="#">
+                   View Details
+                   <i class="fas fa-arrow-right">
+                   </i>
+                  </a>
+                 </div>
+                </div>
+                <div class="card">
+                 <img alt="" height="400" src="img/car13.jpg" width="600">
+                 <div class="badge green">
+                  Great Price
+                 </div>
+                 <div class="bookmark">
+                  <i class="far fa-bookmark">
+                  </i>
+                 </div>
+                 <div class="card-content">
+                  <div class="card-title">
+                   New Range Rover, Evoque
+                  </div>
+                  <div class="card-subtitle">
+                   2023 C300e AMG Line Night Ed Premium...
+                  </div>
+                  <div class="card-info">
+                   <div>
+                    <i class="fas fa-tachometer-alt">
+                    </i>
+                    72,925 miles
+                   </div>
+                   <div>
+                    <i class="fas fa-gas-pump">
+                    </i>
+                    Petrol
+                   </div>
+                   <div>
+                    <i class="fas fa-cogs">
+                    </i>
+                    Automatic
+                   </div>
+                  </div>
+                  <div class="card-price">
+                   <span class="card-old-price">
+                    $789
+                   </span>
+                   $399
+                  </div>
+                  <a class="card-link" href="#">
+                   View Details
+                   <i class="fas fa-arrow-right">
+                   </i>
+                  </a>
+                 </div>
+                </div>
+                <div class="card">
+                 <img alt="" height="400" src="img/car14.jpg" width="600"/>
+                 <div class="bookmark">
+                  <i class="far fa-bookmark">
+                  </i>
+                 </div>
+                 <div class="card-content">
+                  <div class="card-title">
+                   Audi, Q5
+                  </div>
+                  <div class="card-subtitle">
+                   2023 C300e AMG Line Night Ed Premium...
+                  </div>
+                  <div class="card-info">
+                   <div>
+                    <i class="fas fa-tachometer-alt">
+                    </i>
+                    72,925 miles
+                   </div>
+                   <div>
+                    <i class="fas fa-gas-pump">
+                    </i>
+                    Petrol
+                   </div>
+                   <div>
+                    <i class="fas fa-cogs">
+                    </i>
+                    Automatic
+                   </div>
+                  </div>
+                  <div class="card-price">
+                   <span class="card-old-price">
+                    $789
+                   </span>
+                   $399
+                  </div>
+                  <a class="card-link" href="#">
+                   View Details
+                   <i class="fas fa-arrow-right">
+                   </i>
+                  </a>
+                 </div>
+                </div>
+               </div>
+              </div>
+              <div class="Inventory">
+                <div class="header">
+                    <h1>Join BoxCar</h1>
+                    <p>Receive pricing updates, shopping tips & more!</p>
+                    <div class="email-signup">
+                        <input type="email" placeholder="Your e-mail address">
+                        <button>Sign Up</button>
+                    </div>
+                </div>
+                <div class="footer">
+                    <div class="links">
+                        <div>
+                            <h3>Useful Links</h3>
+                            <ul>
+                                <li><a href="#">About Us</a></li>
+                                <li><a href="#">Careers</a></li>
+                                <li><a href="#">Blog</a></li>
+                                <li><a href="#">FAQs</a></li>
+                                <li><a href="#">Finance</a></li>
+                                <li><a href="#">Contact Us</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Quick Links</h3>
+                            <ul>
+                                <li><a href="#">Get in Touch</a></li>
+                                <li><a href="#">Help Center</a></li>
+                                <li><a href="#">Live Chat</a></li>
+                                <li><a href="#">How It Works</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Our Brands</h3>
+                            <ul>
+                                <li><a href="#">Aston Martin</a></li>
+                                <li><a href="#">Audi</a></li>
+                                <li><a href="#">Bentley</a></li>
+                                <li><a href="#">BMW</a></li>
+                                <li><a href="#">Bugatti</a></li>
+                                <li><a href="#">Ferrari</a></li>
+                                <li><a href="#">Jaguar</a></li>
+                                <li><a href="#">Lamborghini</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Vehicles Type</h3>
+                            <ul>
+                                <li><a href="#">Pickup</a></li>
+                                <li><a href="#">Coup</a></li>
+                                <li><a href="#">Family MPV</a></li>
+                                <li><a href="#">Sedan</a></li>
+                                <li><a href="#">SUVs</a></li>
+                                <li><a href="#">Sport Coupe</a></li>
+                                <li><a href="#">Convertible</a></li>
+                                <li><a href="#">Wagon</a></li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h3>Vehicles Type</h3>
+                            <div class="app-links">
+                                <a href="#"><i class="fab fa-apple"></i> Download on the Apple Store</a>
+                                <a href="#"><i class="fab fa-google-play"></i> Get in on Google Play</a>
+                            </div>
+                            <h3>Connect With Us</h3>
+                            <div class="social-links">
+                                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                                <a href="#"><i class="fab fa-twitter"></i></a>
+                                <a href="#"><i class="fab fa-instagram"></i></a>
+                                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="copyright">
+                        &copy; 2024 elite-themes24. All rights reserved.
+                    </div>
+                    <div class="terms">
+                        <a href="#">Terms & Conditions</a> &bull; <a href="#">Privacy Notice</a>
+                    </div>
+                </div>
+            </div>
+</body>
+</html>

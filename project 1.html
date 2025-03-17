@@ -1,0 +1,1361 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css" rel="stylesheet"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" integrity="sha512-Kc323vGBEqzTmouAECnVceyQqyqdsSiqLQISBL29aUW4U/M7pSPA/gEUZQqv1cwx4OnYxTxve5UMg5GT6L4JJg==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;700&amp;display=swap" rel="stylesheet"/>
+<style>
+        body {
+            margin: 0;
+            font-family: 'Nunito', sans-serif;
+           
+        }
+        .navbar {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 20px 50px;
+            background-color: white;
+        }
+        .navbar .logo {
+            font-size: 24px;
+            font-weight: 700;
+        }
+        .navbar .search-bar {
+            display: flex;
+            align-items: center;
+            font-size: 14px;
+            color: #2c2e50;
+        }
+        .navbar .search-bar i {
+            margin-right: 10px;
+        }
+        .navbar .menu {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .menu a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #2c2e50;
+            font-size: 14px;
+        }
+        .navbar .menu a:hover {
+            color: #6c63ff;
+        }
+        .navbar .menu .dropdown {
+            position: relative;
+        }
+        .navbar .menu .dropdown:hover .dropdown-content {
+            display: block;
+        }
+        .navbar .menu .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: white;
+            box-shadow: 0 8px 16px rgba(0,0,0,0.2);
+            z-index: 1;
+        }
+        .navbar .menu .dropdown-content a {
+            padding: 10px 20px;
+            display: block;
+            color: #2c2e50;
+        }
+        .navbar .menu .dropdown-content a:hover {
+            background-color: #f0f2fa;
+        }
+        .navbar .auth {
+            display: flex;
+            align-items: center;
+        }
+        .navbar .auth a {
+            margin-left: 20px;
+            text-decoration: none;
+            color: #2c2e50;
+            font-size: 14px;
+        }
+        .navbar .auth .btn {
+            padding: 10px 20px;
+            border: 1px solid #2c2e50;
+            border-radius: 5px;
+            font-size: 14px;
+            font-weight: 700;
+        }
+        .navbar .auth .btn:hover {
+            background-color: #2c2e50;
+            color: white;
+        }
+        .hero {
+            text-align: center;
+            padding: 170px 110px;
+            background-color: #f0f2fa;
+        }
+        .hero h1 {
+            font-size: 48px;
+            font-weight: 700;
+            color: #2c2e50;
+            margin: 20px 0;
+        }
+        .hero p {
+            font-size: 16px;
+            color: #2c2e50;
+            margin-bottom: 15px;
+        }
+        .search-box {
+            display: flex; 
+            justify-content: center;
+            align-items: center;
+            background-color: white;
+            padding: 10px;
+            border-radius: 50px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+        }
+        .search-box select, .search-box input {
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            font-size: 14px;
+            color: #2c2e50;
+            background-color: transparent;
+        }
+        .search-box select {
+            margin: 0 10px;
+        }
+        .search-box button {
+            background-color: #6c63ff;
+            border: none;
+            outline: none;
+            padding: 10px 20px;
+            border-radius: 50%;
+            color: white; 
+            font-size: 16px;
+            cursor: pointer;
+        }
+        .car-image {
+            display: flex;
+            justify-content: center;
+            margin-top: -210px;
+        }
+        .car-image img {
+            max-width: 100%;
+            height: auto;
+        }
+        .container {
+            width: 80%;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .header {
+            font-size: 2em;
+            font-weight: bold;
+            margin: 20px 0;
+        }
+        .browse-types {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 40px;
+        }
+        .type-card {
+            background-color: #fff;
+            border: 1px solid #e0e0e0;
+            border-radius: 10px;
+            padding: 20px;
+            width: 100px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+        .type-card i {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
+        .type-card p {
+            margin: 0;
+            font-size: 14px;
+        }
+        .cards-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .card {
+            background-color: #f0f4ff;
+            border-radius: 20px;
+            padding: 140px;
+            width: 300px;
+            text-align: left;
+            position: relative;
+        }
+        .card:nth-child(2) {
+            background-color: #ffeef2;
+        }
+        .card h2 {
+            font-size: 1.5em;
+            font-weight: bold;
+            margin: 0 0 10px 0;
+        }
+        .card p {
+            font-size: 14px;
+            margin: 0 0 20px 0;
+        }
+        .card .btn {
+            background-color: #007bff;
+            color: #fff;
+            padding: 10px 20px;
+            border-radius: 5px;
+            text-decoration: none;
+            display: inline-block;
+        }
+        .card:nth-child(2) .btn {
+            background-color: #000;
+        }
+        .card .icon {
+            position: absolute;
+            bottom: 20px;
+            right: 20px;
+            font-size: 50px;
+        }
+        .card:nth-child(2) .icon {
+            color: #ff69b4;
+        }
+        .car {
+            width: 90%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        .otp {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+        .otp a {
+            margin: 0 15px;
+            text-decoration: none;
+            color: #000;
+            font-weight: bold;
+        }
+        .otp a.passive {
+            color: #007bff;
+            border-bottom: 2px solid #007bff;
+        }
+        .can-car {
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+        }
+        .van {
+            background-color: #1a1a2e;
+            color: #fff;
+            border-radius: 10px;
+            width: 23%;
+            margin-bottom: 20px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        .van img {
+            width: 100%;
+            height: auto;
+        }
+        .van .bad {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            background-color: #007bff;
+            color: #fff;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 12px;
+        }
+        .van .bad.prink {
+            background-color: #28a745;
+        }
+        .van .pet {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: #fff;
+            color: #000;
+            padding: 5px;
+            border-radius: 50%;
+            font-size: 16px;
+        }
+        .van .items {
+            padding: 15px;
+        }
+        .van .items h3 {
+            margin: 0;
+            font-size: 18px;
+        }
+        .van .items p {
+            margin: 5px 0;
+            font-size: 14px;
+            color: #ccc;
+        }
+        .van .items .info {
+            display: flex;
+            justify-content: space-between;
+            margin: 10px 0;
+        }
+        .van .items .info div {
+            display: flex;
+            align-items: center;
+        }
+        .van .items .info div i {
+            margin-right: 5px;
+        }
+        .card .items .rupess {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .van .items .rupess .old-rupess {
+            text-decoration: line-through;
+            color: #ccc;
+        }
+        .van .items .rupess .new-rupess {
+            font-size: 24px;
+            font-weight: bold;
+        }
+        .van .items .view-details {
+            display: flex;
+            align-items: center;
+            color: #007bff;
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .van .items .view-details i {
+            margin-left: 5px;
+        }
+        .choss {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 50px 20px;
+            text-align: center;
+        }
+        h1 {
+            font-size: 36px;
+            color: #1a1a1a;
+            margin-bottom: 50px;
+        }
+        .features {
+            display: flex;
+            justify-content: space-around;
+            flex-wrap: wrap;
+        }
+        .feature {
+            flex: 1;
+            max-width: 250px;
+            margin: 20px;
+            text-align: center;
+        }
+        .feature img {
+            width: 60px;
+            height: 60px;
+            margin-bottom: 20px;
+        }
+        .feature h3 {
+            font-size: 20px;
+            color: #1a1a1a;
+            margin-bottom: 10px;
+        }
+        .feature p {
+            font-size: 16px;
+            color: #666;
+        }
+        .team-section {
+            padding: 50px 0;
+        }
+        .team-section h1 {
+            font-size: 36px;
+            color: #1a1a1a;
+            margin-bottom: 50px;
+        }
+        .team-container {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+        }
+        .team-member {
+            background-color: #f9f9f9;
+            border-radius: 15px;
+            padding: 50px;
+            width: 200px;
+            text-align: center;
+        }
+        .team-member:nth-child(1) {
+            background-color: #f9f9f9;
+        }
+        .team-member:nth-child(2) {
+            background-color: #f0f4ff;
+        }
+        .team-member:nth-child(3) {
+            background-color: #e6f0ff;
+        }
+        .team-member:nth-child(4) {
+            background-color: #ffe6f0;
+        }
+        .team-member img {
+            border-radius: 15px;
+            width: 100%;
+            height: auto;
+        }
+        .team-member h2 {
+            font-size: 18px;
+            color: #1a1a1a;
+            margin: 15px 0 5px;
+        }
+        .team-member p {
+            font-size: 14px;
+            color: #666666;
+            margin: 0;
+        }
+        .cont {
+            width: 80%;
+            margin: 0 auto;
+            padding: 20px 0;
+        }
+        h1 {
+            font-size: 36px;
+            color: #212529;
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        .blog-posts {
+            display: flex;
+            justify-content: space-between;
+        }
+        .post {
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            width: 30%;
+        }
+        .post img {
+            width: 100%;
+            height: auto;
+            display: block;
+        }
+        .post .tag {
+            position: absolute;
+            background-color: #fff;
+            color: #000;
+            padding: 5px 10px;
+            border-radius: 20px;
+            font-size: 14px;
+            top: 10px;
+            left: 10px;
+        }
+        .post-content {
+            padding: 20px;
+        }
+        .post-content .author {
+            font-size: 14px;
+            color: #6c757d;
+            margin-bottom: 10px;
+        }
+        .post-content .author i {
+            margin: 0 5px;
+        }
+        .post-content h2 {
+            font-size: 20px;
+            color: #212529;
+            margin: 0;
+        }
+        .contor {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+            text-align: center;
+        }
+        .header {
+            margin-bottom: 40px;
+        }
+        .header h1 {
+            font-size: 36px;
+            margin-bottom: 10px;
+        }
+        .header p {
+            font-size: 16px;
+            color: #666;
+        }
+        .email-signup {
+            display: flex;
+            justify-content: center;
+            margin-bottom: 40px;
+        }
+        .email-signup input[type="email"] {
+            padding: 10px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px 0 0 5px;
+            width: 300px;
+        }
+        .email-signup button {
+            padding: 10px 20px;
+            font-size: 16px;
+            border: none;
+            background-color: #007bff;
+            color: #fff;
+            border-radius: 0 5px 5px 0;
+            cursor: pointer;
+        }
+        .footer {
+            display: flex;
+            justify-content: space-between;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .footer-column {
+            flex: 1;
+            padding: 0 20px;
+        }
+        .footer-column h3 {
+            font-size: 18px;
+            margin-bottom: 10px;
+        }
+        .footer-column ul {
+            list-style: none;
+            padding: 0;
+        }
+        .footer-column ul li {
+            margin-bottom: 5px;
+        }
+        .footer-column ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        .footer-column ul li a:hover {
+            text-decoration: underline;
+        }
+        .social-icons {
+            display: flex;
+            justify-content: center;
+            margin-top: 20px;
+        }
+        .social-icons a {
+            color: #333;
+            font-size: 20px;
+            margin: 0 10px;
+            text-decoration: none;
+        }
+  </style>
+ </head>
+ <body>
+  <div class="navbar">
+   <div class="logo">
+    BOXCARS
+   </div>
+   <div class="search-bar">
+    <form class="example" action="/action_page.php" style="margin:auto;max-width:300px">
+        <input type="text" placeholder="Search.." name="search2">
+        <button type="submit"><i class="fa fa-search"></i></button>
+    </i>
+    <span>
+    
+    </span>
+   </div>
+   <div class="menu">
+    <a href="#">
+     Home
+    </a>
+    <div class="dropdown">
+     <a href="#">
+      Inventory
+     </a>
+     <div class="dropdown-content">
+      <a href="invetrroy.html">
+       New Cars
+      </a> 
+      <a href="#">
+       Used Cars
+      </a>
+     </div>
+    </div>
+    <div class="dropdown">
+     <a href="#">
+      Blog
+     </a>
+     <div class="dropdown-content">
+      <a href="bloge.html">
+       Latest News
+      </a>
+      <a href="#">
+       Tips &amp; Advice
+      </a>
+     </div>
+    </div>
+    <div class="dropdown">
+        <a href="#">
+         Shop
+        </a>
+        <div class="dropdown-content">
+         <a href="shop01.html">
+            Accessories
+         </a>
+         <a href="#">
+            Parts
+         </a>
+        </div>
+       </div>
+    <!-- <div class="dropdown">
+     <a href="#">
+      Shop
+     </a>
+     <div class="dropdown-content">
+      <a href="#">
+       Accessories
+      </a>
+      <a href="#">                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+       Parts
+      </a>
+     </div>
+    </div> -->
+    <div class="dropdown">
+     <a href="jeel.html">
+      Pages
+     </a>
+     <div class="dropdown-content">
+      <a href="#">
+       About Us
+      </a>
+     
+     </div>
+    </div>
+    <a href="contact.html">
+     Contact
+    </a>
+   </div>
+   <div class="auth">
+    <a href="#">
+     Sign in
+    </a>
+    <a class="btn" href="#">
+     Add Listing
+    </a>
+   </div>
+  </div>
+  <div class="hero">
+   <p>
+    Find cars for sale and for rent near you
+   </p>
+   <h1>
+    Find Your Perfect Car
+   </h1>
+   <div class="search-box">
+    <select>
+     <option>
+      Used Cars
+     </option>
+    </select>
+    <select>
+     <option>
+      Any Makes
+     </option>
+    </select>
+    <select>
+     <option>
+      Any Models
+     </option>
+    </select>
+    <select>
+     <option>
+      Any Price
+     </option>
+    </select>
+    <button>
+     <i class="fas fa-search">
+     </i>   
+    </button>
+    
+   </div>
+  </div>
+  <div class="car-image">
+   <img alt="A sleek white car" height="400" src="img/car.png" width="800"/>
+  </div>
+  <div class="container">
+    <div class="header">Browse By Type</div>
+    <div class="browse-types">
+        <div class="type-card">
+            <i class="fas fa-car"></i>
+            <p>SUV</p>
+        </div>
+        <div class="type-card">
+            <i class="fas fa-car-side"></i>
+            <p>Sedan</p>
+        </div>
+        <div class="type-card">
+            <i class="fas fa-shuttle-van"></i>
+            <p>Hatchback</p>
+        </div>
+        <div class="type-card">
+            <i class="fas fa-car-alt"></i>
+            <p>Coupe</p>
+        </div>
+        <div class="type-card">
+            <i class="fas fa-car-battery"></i>
+            <p>Hybrid</p>
+        </div>
+        <div class="type-card">
+            <i class="fas fa-car"></i>
+            <p>Convertible</p>
+        </div>
+        <div class="type-card">
+            <i class="fas fa-shuttle-van"></i>
+            <p>Van</p>
+        </div>
+        <div class="type-card">
+            <i class="fas fa-truck"></i>
+            <p>Truck</p>
+        </div>
+       
+    </div>
+    <div class="cards-container">
+        <div class="card">
+            <h2>Are You Looking For a Car ?</h2>
+            <p>We are committed to providing our customers with exceptional service.</p>
+            <a href="#" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+            <i class="fas fa-car icon" style="color: #6c63ff;"></i>
+        </div>
+        <div class="card">
+            <h2>Do You Want to Sell a Car ?</h2>
+            <p>We are committed to providing our customers with exceptional service.</p>
+            <a href="#" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+            <i class="fas fa-car icon" style="color: #ff69b4;"></i>
+        </div>
+    </div>
+    <div class="car">
+        <div class="otp">
+         <a class="active" href="#">
+          SUV
+         </a>
+         <a href="#">
+          Sedan
+         </a>
+         <a href="#">
+          Hatchback
+         </a>
+         <a href="#">
+          Coupe
+         </a>
+         <a href="#">
+          Convertible
+         </a>
+        </div>
+        <div class="can-car">
+         <div class="van">
+          <img alt="" height="300" src="img/Audi A4.webp" width="400"/>
+          
+          <div class="pet">
+           <!-- <i class="far fa-bookmark"> -->
+           </i>
+          </div>
+          <div class="items">
+           <h3>
+            Audi A4
+           </h3>
+           <p>
+            2023 C300e AMG Line Night Ed Premium...
+           </p>
+           <div class="info">
+            <div>
+             <i class="fas fa-tachometer-alt">
+             </i>
+             72,925 miles
+            </div>
+            <div>
+             <i class="fas fa-gas-pump">
+             </i>
+             Petrol
+            </div>
+            <div>
+             <i class="fas fa-cogs">
+             </i>
+             Automatic
+            </div>
+           </div>
+           <div class="rupess">
+            <div class="old-rupess">
+             $768
+            </div>
+            <div class="new-rupess">
+             $399
+            </div>
+           </div>
+           <a class="view-details" href="#">
+            View Details
+            <i class="fas fa-arrow-right">
+            </i>
+           </a>
+          </div>
+         </div>
+         <div class="van">
+          <img alt="Tesla Model 3" height="300" src="img/Tesla Model 3.webp" width="400"/>
+          <div class="pet">
+          
+           </i>
+          </div>
+          <div class="details">
+           <h3>
+            Tesla Model 3
+           </h3>
+           <p>
+            2023 C300e AMG Line Night Ed Premium...
+           </p>
+           <div class="info">
+            <div>
+             <i class="fas fa-tachometer-alt">
+             </i>
+             72,925 miles
+            </div>
+            <div>
+             <i class="fas fa-gas-pump">
+             </i>
+             Petrol
+            </div>
+            <div>
+             <i class="fas fa-cogs">
+             </i>
+             Automatic
+            </div>
+           </div>
+           <div class="price">
+            <div class="old-price">
+             $933
+            </div>
+            <div class="new-price">
+             $399
+            </div>
+           </div>
+           <a class="view-details" href="#">
+            View Details
+            <i class="fas fa-arrow-right">
+            </i>
+           </a>
+          </div>
+         </div>
+         <div class="van">
+          <img alt="BMW 3 Series" height="300" src="img/BMW 3 Series.webp" width="400"/>
+          
+          <div class="bookmark">
+           <!-- <i class="far fa-bookmark"> -->
+           </i>
+          </div>
+          <div class="details">
+           <h3>
+            BMW 3 Series
+           </h3>
+           <p>
+            2023 C300e AMG Line Night Ed Premium...
+           </p>
+           <div class="info">
+            <div>
+             <i class="fas fa-tachometer-alt">
+             </i>
+             72,925 miles
+            </div>
+            <div>
+             <i class="fas fa-gas-pump">
+             </i>
+             Petrol
+            </div>
+            <div>
+             <i class="fas fa-cogs">
+             </i>
+             Automatic
+            </div>
+           </div>
+           <div class="price">
+            <div class="old-price">
+             $602
+            </div>
+            <div class="new-price">
+             $399
+            </div>
+           </div>
+           <a class="view-details" href="#">
+            View Details
+            <i class="fas fa-arrow-right">
+            </i>
+           </a>
+          </div>
+         </div>
+         <div class="van">
+          <img alt="Jaguar XE" height="300" src="img/Jaguar XE.webp" width="400"/>
+          <div class="bookmark">
+           <!-- <i class="far fa-bookmark"> -->
+           </i>
+          </div>
+          <div class="details">
+           <h3>
+            Jaguar XE
+           </h3>
+           <p>
+            2023 C300e AMG Line Night Ed Premium...
+           </p>
+           <div class="info">
+            <div>
+             <i class="fas fa-tachometer-alt">
+             </i>
+             72,925 miles
+            </div>
+            <div>
+             <i class="fas fa-gas-pump">
+             </i>
+             Petrol
+            </div>
+            <div>
+             <i class="fas fa-cogs">
+             </i>
+             Automatic
+            </div>
+           </div>
+           <div class="price">
+            <div class="old-price">
+             $912
+            </div>
+            <div class="new-price">
+             $399
+            </div>
+           </div>
+           <a class="view-details" href="#">
+            View Details
+            <i class="fas fa-arrow-right">
+            </i>
+           </a>
+          </div>
+         </div>
+        </div>
+       </div>
+       <div class="choss">
+        <h1>
+         Why Choose Us?
+        </h1>
+        <div class="features">
+         <div class="feature">
+            <i class="fa-solid fa-car"></i>
+          <h3>
+           Special Financing Offers
+          </h3>
+          <p>
+           Our stress-free finance department that can find financial solutions to save you money.
+          </p>
+         </div>
+         <div class="feature">
+            <i class="fa-solid fa-car"></i>
+          <h3>
+           Trusted Car Dealership
+          </h3>
+          <p>
+           Our stress-free finance department that can find financial solutions to save you money.
+          </p>
+         </div>
+         <div class="feature">
+            <i class="fa-solid fa-car"></i>
+          <h3>
+           Transparent Pricing
+          </h3>
+          <p>
+           Our stress-free finance department that can find financial solutions to save you money.
+          </p>
+         </div>
+         <div class="feature">
+            <i class="fa-solid fa-car"></i>
+          <h3>
+           Expert Car Service
+          </h3>
+          <p>
+           Our stress-free finance department that can find financial solutions to save you money.
+          </p>
+         </div>
+        </div>
+        <div class="choss">
+            <h1>
+                <U> NEW CAR</U>
+            </h1>
+            <div class="car">
+                <div class="otp">
+                 <a class="active" href="#">
+                  SUV
+                 </a>
+                 <a href="#">
+                  Sedan
+                 </a>
+                 <a href="#">
+                  Hatchback
+                 </a>
+                 <a href="#">
+                  Coupe
+                 </a>
+                 <a href="#">
+                  Convertible
+                 </a>
+                </div>
+                <div class="can-car">
+                 <div class="van">
+                  <img alt="Audi A4" height="300" src="img/Audi A4.webp" width="400"/>
+                  
+                  <div class="pet">
+                   
+                   </i>
+                  </div>
+                  <div class="items">
+                   <h3>
+                    Audi A4
+                   </h3>
+                   <p>
+                    2023 C300e AMG Line Night Ed Premium...
+                   </p>
+                   <div class="info">
+                    <div>
+                     <i class="fas fa-tachometer-alt">
+                     </i>
+                     72,925 miles
+                    </div>
+                    <div>
+                     <i class="fas fa-gas-pump">
+                     </i>
+                     Petrol
+                    </div>
+                    <div>
+                     <i class="fas fa-cogs">
+                     </i>
+                     Automatic
+                    </div>
+                   </div>
+                   <div class="rupess">
+                    <div class="old-rupess">
+                     $768
+                    </div>
+                    <div class="new-rupess">
+                     $399
+                    </div>
+                   </div>
+                   <a class="view-details" href="#">
+                    View Details
+                    <i class="fas fa-arrow-right">
+                    </i>
+                   </a>
+                  </div>
+                 </div>
+                 <div class="van">
+                  <img alt="Tesla Model 3" height="300" src="img/Tesla Model 3.webp" width="400"/>
+                  <div class="pet">
+                   
+                   </i>
+                  </div>
+                  <div class="details">
+                   <h3>
+                    Tesla Model 3
+                   </h3>
+                   <p>
+                    2023 C300e AMG Line Night Ed Premium...
+                   </p>
+                   <div class="info">
+                    <div>
+                     <i class="fas fa-tachometer-alt">
+                     </i>
+                     72,925 miles
+                    </div>
+                    <div>
+                     <i class="fas fa-gas-pump">
+                     </i>
+                     Petrol
+                    </div>
+                    <div>
+                     <i class="fas fa-cogs">
+                     </i>
+                     Automatic
+                    </div>
+                   </div>
+                   <div class="price">
+                    <div class="old-price">
+                     $933
+                    </div>
+                    <div class="new-price">
+                     $399
+                    </div>
+                   </div>
+                   <a class="view-details" href="#">
+                    View Details
+                    <i class="fas fa-arrow-right">
+                    </i>
+                   </a>
+                  </div>
+                 </div>
+                 <div class="van">
+                  <img alt="BMW 3 Series" height="300" src="img/BMW 3 Series.webp" width="400"/>
+                  <div class="badge green">
+                  
+                  </div>
+                  <div class="bookmark">
+                   <!-- <i class="far fa-bookmark"> -->
+                   </i>
+                  </div>
+                  <div class="details">
+                   <h3>
+                    BMW 3 Series
+                   </h3>
+                   <p>
+                    2023 C300e AMG Line Night Ed Premium...
+                   </p>
+                   <div class="info">
+                    <div>
+                     <i class="fas fa-tachometer-alt">
+                     </i>
+                     72,925 miles
+                    </div>
+                    <div>
+                     <i class="fas fa-gas-pump">
+                     </i>
+                     Petrol
+                    </div>
+                    <div>
+                     <i class="fas fa-cogs">
+                     </i>
+                     Automatic
+                    </div>
+                   </div>
+                   <div class="price">
+                    <div class="old-price">
+                     $602
+                    </div>
+                    <div class="new-price">
+                     $399
+                    </div>
+                   </div>
+                   <a class="view-details" href="#">
+                    View Details
+                    <i class="fas fa-arrow-right">
+                    </i>
+                   </a>
+                  </div>
+                 </div>
+                 <div class="van">
+                  <img alt="Jaguar XE" height="300" src="img/Jaguar XE.webp" width="400"/>
+                  <div class="bookmark">
+                   <!-- <i class="far fa-bookmark"> -->
+                   </i>
+                  </div>
+                  <div class="details">
+                   <h3>
+                    Jaguar XE
+                   </h3>
+                   <p>
+                    2023 C300e AMG Line Night Ed Premium...
+                   </p>
+                   <div class="info">
+                    <div>
+                     <i class="fas fa-tachometer-alt">
+                     </i>
+                     72,925 miles
+                    </div>
+                    <div>
+                     <i class="fas fa-gas-pump">
+                     </i>
+                     Petrol
+                    </div>
+                    <div>
+                     <i class="fas fa-cogs">
+                     </i>
+                     Automatic
+                    </div>
+                   </div>
+                   <div class="price">
+                    <div class="old-price">
+                     $912
+                    </div>
+                    <div class="new-price">
+                     $399
+                    </div>
+                   </div>
+                   <a class="view-details" href="#">
+                    View Details
+                    <i class="fas fa-arrow-right">
+                    </i>
+                   </a>
+                  </div>
+                 </div>
+                </div>
+               </div>
+               <div class="team-section">
+                <h1>
+                 Our Team
+                </h1>
+                <div class="team-container">
+                 <div class="team-member">
+                  <img alt="" height="200" src="img/man1.jpg" width="200"/>
+                  <h2>
+                   Courtney Henry
+                  </h2>
+                  <p>
+                   Software Development Manager
+                  </p>
+                 </div>
+                 <div class="team-member">
+                  <img alt="" height="200" src="img/man2.webp" width="200"/>
+                  <h2>
+                   Jerome Bell
+                  </h2>
+                  <p>
+                   Software Tester
+                  </p>
+                 </div>
+                 <div class="team-member">
+                  <img alt="" height="200" src="img/women.webp" width="200"/>
+                  <h2>
+                   Arlene McCoy
+                  </h2>
+                  <p>
+                   Software Developer
+                  </p>
+                 </div>
+                 <div class="team-member">
+                  <img alt="" height="200" src="img/women1.webp" width="200"/>
+                  <h2>
+                   Jenny Wilson
+                  </h2>
+                  <p>
+                   UI/UX Designer
+                  </p>
+                 </div>
+                </div>
+               </div>  
+               <div class="container">
+                <h1>
+                 Latest Blog Posts
+                </h1>
+                <div class="blog-posts">
+                 <div class="post">
+                  <div class="post-image">
+                   <img alt="" height="400" src="img/car2.webp" width="600"/>
+                   
+                  </div>
+                  <div class="post-content">
+                   <div class="author">
+                    Ali Tufan
+                    <i class="fas fa-circle">
+                    </i>
+                    April 20, 2023
+                   </div>
+                   <h2>
+                    This Long-Awaited Technology May Finally Change the World
+                   </h2>
+                  </div>
+                 </div>
+                 <div class="post">
+                  <div class="post-image">
+                   <img alt="" height="400" src="img/that.webp" width="600"/>
+                   
+                  </div>
+                  <div class="post-content">
+                   <div class="author">
+                    Ali Tufan
+                    <i class="fas fa-circle">
+                    </i>
+                    April 20, 2023
+                   </div>
+                   <h2>
+                    This Long-Awaited Technology May Finally Change the World
+                   </h2>
+                  </div>
+                 </div>
+                 <div class="post">
+                  <div class="post-image">
+                   <img alt="" height="400" src="img/g wetgan.webp" width="600"/>
+                  
+                  </div>
+                  <div class="post-content">
+                   <div class="author">
+                    Ali Tufan
+                    <i class="fas fa-circle">
+                    </i>
+                    April 20, 2023
+                   </div>
+                   <h2>
+                    This Long-Awaited Technology May Finally Change the World
+                   </h2>
+                  </div>
+                 </div>
+                </div>
+               </div> 
+                <div class="container">
+        <div class="header">
+            <h1>Join BoxCar</h1>
+            <p>Receive pricing updates, shopping tips & more!</p>
+        </div>
+        <div class="email-signup">
+            <input type="email" placeholder="Your e-mail address">
+            <button>Sign Up</button>
+        </div>
+        <div class="footer">
+            <div class="footer-column">
+                <h3>Useful Links</h3>
+                <ul>
+                    <li><a href="#">About Us</a></li>
+                    <li><a href="#">Careers</a></li>
+                    <li><a href="#">Blog</a></li>
+                    <li><a href="#">FAQs</a></li>
+                    <li><a href="#">Finance</a></li>
+                    <li><a href="#">Contact Us</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Quick Links</h3>
+                <ul>
+                    <li><a href="#">Get in Touch</a></li>
+                    <li><a href="#">Help Center</a></li>
+                    <li><a href="#">Live Chat</a></li>
+                    <li><a href="#">How It Works</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Our Brands</h3>
+                <ul>
+                    <li><a href="#">Aston Martin</a></li>
+                    <li><a href="#">Audi</a></li>
+                    <li><a href="#">Bentley</a></li>
+                    <li><a href="#">BMW</a></li>
+                    <li><a href="#">Bugatti</a></li>
+                    <li><a href="#">Ferrari</a></li>
+                    <li><a href="#">Jaguar</a></li>
+                    <li><a href="#">Lamborghini</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Vehicles Type</h3>
+                <ul>
+                    <li><a href="#">Pickup</a></li>
+                    <li><a href="#">Coup</a></li>
+                    <li><a href="#">Family MPV</a></li>
+                    <li><a href="#">Sedan</a></li>
+                    <li><a href="#">SUVs</a></li>
+                    <li><a href="#">Sport Coupe</a></li>
+                    <li><a href="#">Convertible</a></li>
+                    <li><a href="#">Wagon</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h3>Vehicles Type</h3>
+                <p>Monday – Friday: 09:00AM – 09:00 PM</p>
+                <p>Saturday: 09:00AM – 07:00PM</p>
+                <p>Sunday: Closed</p>
+                <h3>Connect With Us</h3>
+                <div class="social-icons">
+                    <a href="#"><i class="fab fa-facebook-f"></i></a>
+                    <a href="#"><i class="fab fa-twitter"></i></a>
+                    <a href="#"><i class="fab fa-instagram"></i></a>
+                    <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
+
+ </body>
+</html>
